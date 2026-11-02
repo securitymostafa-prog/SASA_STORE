@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <span class="hero-label">WELCOME TO SASA STORE</span>
+        <h1>اكتشف عالم التسوق<br><span>بأسلوب مختلف</span></h1>
+        <p>اختار منتجاتك المفضلة واستمتع بتجربة تسوق مميزة.</p>
+        <a href="#products" class="main-btn">اكتشف المنتجات</a>
+    </div>
+</section>
+
+<section class="products-section" id="products">
+
+    <div class="section-heading">
+        <span>OUR COLLECTION</span>
+        <h2>منتجاتنا</h2>
+        <p>اكتشف أحدث المنتجات المتاحة في متجرنا</p>
+    </div>
+
+    {% if products %}
+
+    <div class="products-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <div class="product-image">
+                {% if product.image %}
+                    <img src="{{ url_for('static', filename='uploads/' + product.image) }}"
+                         alt="{{ product.name }}">
+                {% else %}
+                    <div class="no-image">SASA STORE</div>
+                {% endif %}
+            </div>
+
+            <div class="product-info">
+                <h3>{{ product.name }}</h3>
+
+                <p class="product-description">
+                    {{ product.description or 'منتج مميز من متجرنا' }}
+                </p>
+
+                <div class="product-bottom">
+                    <span class="price">{{ "%.2f"|format(product.price) }} EGP</span>
+                    <a class="buy-btn"
+                       href="mailto:{{ site_settings.contact_email }}?subject=استفسار عن {{ product.name }}">
+                        استفسر الآن
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-products">
+        <h3>قريباً سيتم إضافة المنتجات</h3>
+        <p>تابعنا لاكتشاف منتجاتنا الجديدة.</p>
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

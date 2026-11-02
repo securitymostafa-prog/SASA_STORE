@@ -1,0 +1,50 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="settings-section">
+
+    <div class="admin-card settings-card">
+
+        <span class="hero-label">STORE SETTINGS</span>
+        <h1>إعدادات المتجر</h1>
+        <p>تقدر تغير اسم المتجر وبريد التواصل من هنا.</p>
+
+        <form method="POST">
+
+            <div class="form-group">
+                <label>اسم المتجر</label>
+                <input
+                    type="text"
+                    name="store_name"
+                    value="{{ settings.store_name }}"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>البريد الإلكتروني للتواصل</label>
+                <input
+                    type="email"
+                    name="contact_email"
+                    value="{{ settings.contact_email }}"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="main-btn">
+                حفظ الإعدادات
+            </button>
+
+        </form>
+
+        <a href="{{ url_for('admin') }}" class="back-link">
+            العودة للوحة التحكم
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

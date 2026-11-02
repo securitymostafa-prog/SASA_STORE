@@ -1,0 +1,53 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="login-card">
+
+        <div class="login-icon">S</div>
+
+        <span class="hero-label">ADMIN PANEL</span>
+
+        <h1>مرحباً بعودتك</h1>
+        <p>سجل دخولك لإدارة المتجر</p>
+
+        <form method="POST">
+
+            <div class="form-group">
+                <label>اسم المستخدم</label>
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="أدخل اسم المستخدم"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>كلمة المرور</label>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="أدخل كلمة المرور"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="main-btn login-btn">
+                تسجيل الدخول
+            </button>
+
+        </form>
+
+        <a href="{{ url_for('index') }}" class="back-link">
+            العودة للمتجر
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
